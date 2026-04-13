@@ -532,17 +532,6 @@
 </div>
 
 <script>
-const FORM_ID = '1FAIpQLSedVksJBsNOWlkT9ll2h0uaQADK-ncdMWX8LmssOn2jbz0z_g';
-const ENTRY = {
-  company: 'entry.239474426',
-  name:    'entry.2088403307',
-  title:   'entry.2024900179',
-  phone:   'entry.1317858153',
-  email:   'entry.1437485158',
-  message: 'entry.1340829762',
-  note:    'entry.13867688'
-};
-
 function openModal() {
   document.getElementById('modalOverlay').classList.add('active');
   document.body.style.overflow = 'hidden';
@@ -566,33 +555,51 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
   btn.disabled = true;
   btn.textContent = '전송 중...';
 
-  const formData = new FormData();
-  formData.append(ENTRY.company, document.getElementById('f_company').value);
-  formData.append(ENTRY.name,    document.getElementById('f_name').value);
-  formData.append(ENTRY.title,   document.getElementById('f_title').value);
-  formData.append(ENTRY.phone,   document.getElementById('f_phone').value);
-  formData.append(ENTRY.email,   document.getElementById('f_email').value);
-  formData.append(ENTRY.message, document.getElementById('f_message').value);
-  formData.append(ENTRY.note,    document.getElementById('f_note').value);
-  formData.append('fvv', '1');
-  formData.append('fbzx', '-3236016878034392883');
-  formData.append('pageHistory', '0');
+  const FORM_ID = '1FAIpQLSedVksJBsNOWlkT9ll2h0uaQADK-ncdMWX8LmssOn2jbz0z_g';
+  const base = 'https://docs.google.com/forms/d/e/' + FORM_ID + '/formResponse';
 
-  const url = 'https://docs.google.com/forms/d/e/' + FORM_ID + '/formResponse';
+  const params = new URLSearchParams();
+  params.append('entry.239474426',  document.getElementById('f_company').value);
+  params.append('entry.2088403307', document.getElementById('f_name').value);
+  params.append('entry.2024900179', document.getElementById('f_title').value);
+  params.append('entry.1317858153', document.getElementById('f_phone').value);
+  params.append('entry.1437485158', document.getElementById('f_email').value);
+  params.append('entry.1340829762', document.getElementById('f_message').value);
+  params.append('entry.13867688',   document.getElementById('f_note').value);
+  params.append('fvv', '1');
+  params.append('fbzx', '-3236016878034392883');
 
-  fetch(url, { method: 'POST', body: formData, mode: 'no-cors' })
-    .then(() => {
-      document.getElementById('formView').style.display = 'none';
-      document.getElementById('successView').style.display = 'block';
-      btn.disabled = false;
-      btn.textContent = '문의 보내기';
-    })
-    .catch(() => {
-      document.getElementById('formView').style.display = 'none';
-      document.getElementById('successView').style.display = 'block';
-      btn.disabled = false;
-      btn.textContent = '문의 보내기';
-    });
+  // iframe 방식으로 제출 (CORS 우회)
+  const iframe = document.createElement('iframe');
+  iframe.name = 'hidden_iframe';
+  iframe.style.display = 'none';
+  document.body.appendChild(iframe);
+
+  const form = document.createElement('form');
+  form.method = 'POST';
+  form.action = base;
+  form.target = 'hidden_iframe';
+  form.style.display = 'none';
+
+  params.forEach((value, key) => {
+    const input = document.createElement('input');
+    input.type = 'hidden';
+    input.name = key;
+    input.value = value;
+    form.appendChild(input);
+  });
+
+  document.body.appendChild(form);
+  form.submit();
+
+  setTimeout(() => {
+    document.getElementById('formView').style.display = 'none';
+    document.getElementById('successView').style.display = 'block';
+    btn.disabled = false;
+    btn.textContent = '문의 보내기';
+    document.body.removeChild(iframe);
+    document.body.removeChild(form);
+  }, 1500);
 });
 </script>
 
