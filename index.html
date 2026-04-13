@@ -68,8 +68,23 @@
   .cta-section .cta:hover { background: #333; transition: 0.2s; }
   .contact-info { margin-top: 1.25rem; font-size: 15px; color: #888; }
 
-  footer { padding: 2rem; text-align: center; }
-  footer p { font-size: 12px; color: #bbb; }
+  footer { padding: 2.5rem 2rem; background: #f7f7f5; border-top: 1px solid #e8e8e8; }
+  .footer-inner { max-width: 680px; margin: 0 auto; text-align: center; }
+  .footer-info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem 1.5rem;
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 0.75rem;
+  }
+  .footer-info strong { color: #555; font-weight: 600; }
+  .footer-copy { font-size: 12px; color: #bbb; }
+  @media (max-width: 600px) {
+    .footer-info { flex-direction: column; gap: 0.3rem; }
+  }
+
 
   @media (max-width: 600px) {
     .hero h1 { font-size: 22px; }
@@ -310,20 +325,8 @@
   <div class="section-full-inner">
     <p class="label">Approach</p>
     <h2>우리는 다르게 시작합니다</h2>
-    <p>라운드업은 무엇을 도입할지부터 이야기하지 않습니다. 대신 먼저 확인합니다.</p>
-    <div class="bullets" style="margin-top:1rem;">
-      <div class="bullet"><div class="bullet-dot"></div><span>지금 있는 시스템은 충분한가</span></div>
-      <div class="bullet"><div class="bullet-dot"></div><span>운영은 왜 작동하지 않는가</span></div>
-      <div class="bullet"><div class="bullet-dot"></div><span>무엇이 연결을 막고 있는가</span></div>
-    </div>
-    <div class="highlight">대부분의 경우, 답은 이미 내부에 있습니다.</div>
-    <p>그래서 우리는 이렇게 접근합니다.</p>
-    <div class="bullets" style="margin-top:1rem;">
-      <div class="bullet"><div class="bullet-dot"></div><span>투자 이전에, 내부 개선부터</span></div>
-      <div class="bullet"><div class="bullet-dot"></div><span>도입 이전에, 운영 정렬부터</span></div>
-      <div class="bullet"><div class="bullet-dot"></div><span>확장 이전에, 구조 안정화부터</span></div>
-    </div>
-    <div class="highlight">필요 없는 투자는 줄이고, 필요한 변화에 집중합니다.</div>
+    <p>라운드업은 먼저 묻습니다. 지금 있는 것으로 충분한가.</p>
+    <div class="highlight">투자보다 내부 개선, 도입보다 운영 정렬, 확장보다 구조 안정화.<br>필요 없는 투자는 줄이고, 필요한 변화에 집중합니다.</div>
   </div>
 </div>
 
@@ -333,12 +336,12 @@
     <h2>현장에서 결과로 검증된 방식입니다</h2>
     <p>라운드업의 접근은 이론이 아니라 실제 변화로 증명되어 왔습니다.</p>
     <div class="proof-items">
-      <div class="proof-item"><span class="check">✓</span><span>자동차 부품산업 및 제조업 기반 → 품질 및 운영 체계의 구조적 개선 수행</span></div>
-      <div class="proof-item"><span class="check">✓</span><span>SQ 인증 대상 20여 개 업체 전반의 등급 향상 → 개별 대응이 아닌 운영 체계 전반의 수준 향상</span></div>
-      <div class="proof-item"><span class="check">✓</span><span>그랜드 품질 5스타, 품질 5스타 달성 프로젝트 참여 (총 5개사) → 평가 대응이 아닌 운영 수준 변화의 결과</span></div>
-      <div class="proof-item"><span class="check">✓</span><span>대한민국 안전대상 수상 조직 배출 → 형식적 관리가 아닌 실질적인 안전 운영 체계 구축</span></div>
-      <div class="proof-item"><span class="check">✓</span><span>최우수 협력업체상 수상 및 우수사례 레퍼런스 확보 → 고객사 관점에서 인정받은 실행 성과 기반 검증</span></div>
-      <div class="proof-item"><span class="check">✓</span><span>주요 고객사와 10년 이상 장기 파트너십 유지 → 지속되는 성과로 신뢰 축적</span></div>
+      <div class="proof-item"><span class="check">✓</span><span><strong>자동차 부품산업 및 제조업 기반</strong> → 품질 및 운영 체계의 구조적 개선 수행</span></div>
+      <div class="proof-item"><span class="check">✓</span><span><strong>SQ 인증 대상 20여 개 업체 전반의 등급 향상</strong> → 개별 대응이 아닌 운영 체계 전반의 수준 향상</span></div>
+      <div class="proof-item"><span class="check">✓</span><span><strong>그랜드 품질 5스타, 품질 5스타 달성 프로젝트 참여 (총 5개사)</strong> → 평가 대응이 아닌 운영 수준 변화의 결과</span></div>
+      <div class="proof-item"><span class="check">✓</span><span><strong>대한민국 안전대상 수상 조직 배출</strong> → 형식적 관리가 아닌 실질적인 안전 운영 체계 구축</span></div>
+      <div class="proof-item"><span class="check">✓</span><span><strong>최우수 협력업체상 수상 및 우수사례 레퍼런스 확보</strong> → 고객사 관점에서 인정받은 실행 성과 기반 검증</span></div>
+      <div class="proof-item"><span class="check">✓</span><span><strong>주요 고객사와 10년 이상 장기 파트너십 유지</strong> → 지속되는 성과로 신뢰 축적</span></div>
     </div>
     <div class="highlight">성과는 만들어내는 것이 아니라, 반복되도록 설계됩니다.</div>
   </div>
@@ -347,7 +350,7 @@
 <div class="section-full" style="background:#f7f7f5;">
   <div class="section-full-inner">
     <p class="label">Services</p>
-    <h2>라운드업이 제공하는 것</h2>
+    <h2>조직에 기여할 수 있는 영역</h2>
     <div class="services-grid">
       <div class="svc"><div class="svc-icon">⚙️</div><h4>일하는 방식 혁신</h4><p>조직의 운영 구조를 재설계하여 성과가 발생하는 방식으로 전환합니다.</p></div>
       <div class="svc"><div class="svc-icon">💡</div><h4>전략 자문</h4><p>조직에 적합한 전략의 설계와 효과적인 운영을 지원합니다.</p></div>
@@ -371,7 +374,14 @@
 </div>
 
 <div class="cta-section" id="contact">
-  <h2>성과는 더 많은 도입으로 만들어지지 않습니다<br>작동하는 구조에서 만들어집니다</h2>
-  <p class="desc">라운드업 컴퍼니는 시스템을 추가하는 회사가 아니라 시스템이 작동하게 만드는 회사입니다.<br>성과가 지속가능한 구조를 원하신다면, 지금 구조를 다시 설계하십시오.</p>
+  <h2>성과는 도입으로 만들어지지 않습니다<br>작동하는 구조에서 만들어집니다</h2>
+  <p class="desc">라운드업은 시스템을 추가하는 회사가 아닙니다<br>시스템이 작동하게 만드는 회사입니다<br><br>성과가 지속되길 원하신다면<br>지금 구조를 다시 설계하십시오</p>
   <a href="https://forms.gle/DRbrq8QUain5Sy547" target="_blank" class="cta">문의하기</a>
   <div class
+<footer>
+  <div class="footer-inner">
+    <div class="footer-info">
+      <span><strong>라운드업 컴퍼니</strong></span>
+      <span>대표 박해원</span>
+      <span>서울특별시 강남구 테헤란로 625 (삼성동, 덕명빌딩) 17층 RA1766호</span>
+      <span><a href="/cdn-cgi/l/email-prot
