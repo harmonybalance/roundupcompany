@@ -232,6 +232,107 @@
     .roundup-verb { font-size: 17px; min-width: 90px; }
     .roundup-desc { font-size: 14px; }
   }
+
+  /* 팝업 오버레이 */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+  }
+  .modal-overlay.active { display: flex; }
+  .modal {
+    background: #fff;
+    border-radius: 16px;
+    padding: 2.5rem 2rem;
+    width: 100%;
+    max-width: 480px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+  }
+  .modal-close {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    font-size: 20px;
+    color: #aaa;
+    cursor: pointer;
+    background: none;
+    border: none;
+    line-height: 1;
+  }
+  .modal-close:hover { color: #333; }
+  .modal h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 0.4rem;
+  }
+  .modal .modal-sub {
+    font-size: 13px;
+    color: #aaa;
+    margin-bottom: 1.75rem;
+  }
+  .form-group {
+    margin-bottom: 1rem;
+  }
+  .form-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    color: #555;
+    margin-bottom: 0.4rem;
+  }
+  .form-group label span { color: #e24b4a; margin-left: 2px; }
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #1a1a1a;
+    font-family: inherit;
+    outline: none;
+    transition: border 0.15s;
+    box-sizing: border-box;
+  }
+  .form-group input:focus,
+  .form-group textarea:focus { border-color: #1a1a1a; }
+  .form-group textarea { resize: vertical; min-height: 90px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+  .modal-submit {
+    width: 100%;
+    padding: 13px;
+    background: #1a1a1a;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 0.75rem;
+    font-family: inherit;
+    transition: background 0.15s;
+  }
+  .modal-submit:hover { background: #333; }
+  .modal-submit:disabled { background: #ccc; cursor: not-allowed; }
+  .modal-success {
+    text-align: center;
+    padding: 2rem 0;
+  }
+  .modal-success .success-icon { font-size: 40px; margin-bottom: 1rem; }
+  .modal-success h4 { font-size: 17px; font-weight: 600; margin-bottom: 0.5rem; }
+  .modal-success p { font-size: 14px; color: #777; }
+  @media (max-width: 480px) {
+    .form-row { grid-template-columns: 1fr; }
+    .modal { padding: 2rem 1.25rem; }
+  }
 </style>
 </head>
 <body>
@@ -246,7 +347,7 @@
     <h1>성과는 시스템에서 시작되고,<br>운영에서 완성됩니다</h1>
     <p class="sub">좋은 시스템은 방향을 만들고, 좋은 운영은 결과를 만듭니다.<br>라운드업 컴퍼니는 시스템과 운영이 하나로 작동하는 구조를 설계합니다.</p>
     <p class="tagline">FROM POTENTIAL TO PERFORMANCE</p>
-    <a href="https://forms.gle/DRbrq8QUain5Sy547" target="_blank" class="cta">문의하기</a>
+    <button class="cta" onclick="openModal()">문의하기</button>
   </div>
 </div>
 
@@ -377,18 +478,127 @@
 <div class="cta-section" id="contact">
   <h2>성과는 도입으로 만들어지지 않습니다<br>작동하는 구조에서 만들어집니다</h2>
   <p class="desc">라운드업은 시스템을 추가하는 회사가 아닙니다<br>시스템이 작동하게 만드는 회사입니다<br><br>성과를 만들어 내고, 그 성과가 지속적으로 개선되길 원한다면<br>조직의 운영구조를 다시 설계하십시오.</p>
-  <a href="https://forms.gle/DRbrq8QUain5Sy547" target="_blank" class="cta">문의하기</a>
+  <button class="cta" onclick="openModal()">문의하기</button>
   <div class
+
+<!-- 문의 팝업 -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeOnOverlay(event)">
+  <div class="modal" id="modalBox">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div id="formView">
+      <h3>문의하기</h3>
+      <p class="modal-sub">담당자가 확인 후 연락드리겠습니다.</p>
+      <form id="contactForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label>회사명 <span>*</span></label>
+            <input type="text" id="f_company" placeholder="회사명" required>
+          </div>
+          <div class="form-group">
+            <label>이름 <span>*</span></label>
+            <input type="text" id="f_name" placeholder="이름" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>직책</label>
+          <input type="text" id="f_title" placeholder="ex. 품질팀장">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>전화번호 <span>*</span></label>
+            <input type="tel" id="f_phone" placeholder="010-0000-0000" required>
+          </div>
+          <div class="form-group">
+            <label>이메일 <span>*</span></label>
+            <input type="email" id="f_email" placeholder="이메일" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>문의 내용 <span>*</span></label>
+          <textarea id="f_message" placeholder="ex. SQ 컨설팅 문의" required></textarea>
+        </div>
+        <div class="form-group">
+          <label>비고</label>
+          <input type="text" id="f_note" placeholder="추가 전달 사항">
+        </div>
+        <button type="submit" class="modal-submit" id="submitBtn">문의 보내기</button>
+      </form>
+    </div>
+    <div id="successView" class="modal-success" style="display:none;">
+      <div class="success-icon">✓</div>
+      <h4>문의가 접수되었습니다</h4>
+      <p>담당자가 확인 후 빠르게 연락드리겠습니다.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+const FORM_ID = '1FAIpQLSedVksJBsNOWlkT9ll2h0uaQADK-ncdMWX8LmssOn2jbz0z_g';
+const ENTRY = {
+  company: 'entry.1072788473',
+  name:    'entry.1766478555',
+  title:   'entry.1979484496',
+  phone:   'entry.604722425',
+  email:   'entry.1850272365',
+  message: 'entry.874882788',
+  note:    'entry.140094703'
+};
+
+function openModal() {
+  document.getElementById('modalOverlay').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('active');
+  document.body.style.overflow = '';
+  setTimeout(() => {
+    document.getElementById('formView').style.display = 'block';
+    document.getElementById('successView').style.display = 'none';
+    document.getElementById('contactForm').reset();
+  }, 300);
+}
+function closeOnOverlay(e) {
+  if (e.target === document.getElementById('modalOverlay')) closeModal();
+}
+
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.textContent = '전송 중...';
+
+  const formData = new FormData();
+  formData.append(ENTRY.company, document.getElementById('f_company').value);
+  formData.append(ENTRY.name,    document.getElementById('f_name').value);
+  formData.append(ENTRY.title,   document.getElementById('f_title').value);
+  formData.append(ENTRY.phone,   document.getElementById('f_phone').value);
+  formData.append(ENTRY.email,   document.getElementById('f_email').value);
+  formData.append(ENTRY.message, document.getElementById('f_message').value);
+  formData.append(ENTRY.note,    document.getElementById('f_note').value);
+
+  const url = 'https://docs.google.com/forms/d/e/' + FORM_ID + '/formResponse';
+
+  fetch(url, { method: 'POST', body: formData, mode: 'no-cors' })
+    .then(() => {
+      document.getElementById('formView').style.display = 'none';
+      document.getElementById('successView').style.display = 'block';
+      btn.disabled = false;
+      btn.textContent = '문의 보내기';
+    })
+    .catch(() => {
+      document.getElementById('formView').style.display = 'none';
+      document.getElementById('successView').style.display = 'block';
+      btn.disabled = false;
+      btn.textContent = '문의 보내기';
+    });
+});
+</script>
+
 <footer>
   <div class="footer-inner">
     <div class="footer-info">
       <span><strong>라운드업 컴퍼니</strong></span>
       <span>대표 박해원</span>
       <span>서울특별시 강남구 테헤란로 625 (삼성동, 덕명빌딩) 17층 RA1766호</span>
-      <span>biz@roundupcompany.com</span>
-    </div>
-    <p class="footer-copyright">COPYRIGHT ⓒ ROUND UP COMPANY. ALL RIGHTS RESERVED.</p>
-  </div>
-</footer>
-</body>
-</html>
+      <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c8aaa1b288baa7bda6acbdb8aba7a5b8a9a6b1e6aba7a5">[email&#160;protected]</a></span>
+    </div
