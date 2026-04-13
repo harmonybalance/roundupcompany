@@ -143,9 +143,9 @@
     word-break: keep-all;
   }
   .roundup-def {
-    padding: 4rem 2rem;
+    padding: 6rem 2rem;
     border-bottom: 1px solid #e8e8e8;
-    background: #1a1a1a;
+    background: #fff;
   }
   .roundup-def-inner {
     max-width: 680px;
@@ -154,49 +154,67 @@
     gap: 3rem;
     align-items: center;
   }
+  .roundup-def-content { flex: 1; }
   .roundup-def-logo {
     flex-shrink: 0;
+    display: flex;
+    align-items: center;
   }
   .roundup-def-logo img {
-    height: 70px;
-    filter: invert(1);
-    opacity: 0.9;
+    width: 160px;
+    opacity: 0.85;
   }
-  .roundup-def-content { flex: 1; }
+  .roundup-def-title {
+    display: flex;
+    align-items: baseline;
+    gap: 1.25rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+  }
+  .roundup-def-name {
+    font-size: 36px;
+    font-weight: 700;
+    color: #1a1a1a;
+    letter-spacing: -0.01em;
+  }
   .roundup-def-dict {
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.14em;
-    color: rgba(255,255,255,0.4);
-    text-transform: uppercase;
-    margin-bottom: 1.5rem;
+    font-size: 13px;
+    color: #aaa;
+    font-weight: 400;
+    letter-spacing: 0.02em;
   }
   .roundup-def-item {
     display: flex;
-    gap: 0;
-    margin-bottom: 1rem;
     align-items: baseline;
+    gap: 0;
+    padding: 1.25rem 0;
+    border-top: 1px solid #e8e8e8;
   }
-  .roundup-def-item:last-child { margin-bottom: 0; }
+  .roundup-def-item:last-child { padding-bottom: 0; }
   .roundup-verb {
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 600;
-    color: #fff;
-    min-width: 90px;
+    color: #1a1a1a;
+    min-width: 110px;
   }
   .roundup-dash {
     font-size: 15px;
-    color: rgba(255,255,255,0.3);
-    margin: 0 12px;
+    color: #ccc;
+    margin: 0 16px;
   }
   .roundup-desc {
-    font-size: 15px;
-    color: rgba(255,255,255,0.65);
+    font-size: 16px;
+    color: #555;
     line-height: 1.6;
   }
   @media (max-width: 600px) {
-    .roundup-def-inner { flex-direction: column; gap: 1.5rem; }
-    .roundup-def-logo img { height: 50px; }
+    .roundup-def { padding: 4rem 2rem; }
+    .roundup-def-inner { flex-direction: column; gap: 2rem; }
+    .roundup-def-logo { order: -1; }
+    .roundup-def-logo img { width: 120px; }
+    .roundup-def-name { font-size: 28px; }
+    .roundup-verb { font-size: 17px; min-width: 90px; }
+    .roundup-desc { font-size: 14px; }
   }
 </style>
 </head>
@@ -218,11 +236,11 @@
 
 <div class="roundup-def">
   <div class="roundup-def-inner">
-    <div class="roundup-def-logo">
-      <img src="logo.jpg" alt="ROUND UP COMPANY">
-    </div>
     <div class="roundup-def-content">
-      <p class="roundup-def-dict">round up &nbsp;·&nbsp; 올리다 &nbsp;·&nbsp; 정리하다 &nbsp;·&nbsp; 모으다</p>
+      <div class="roundup-def-title">
+        <span class="roundup-def-name">ROUND UP</span>
+        <span class="roundup-def-dict">사전적 의미 : 올리다, 정리하다, 모으다</span>
+      </div>
       <div class="roundup-def-item">
         <span class="roundup-verb">끌어올립니다</span>
         <span class="roundup-dash">—</span>
@@ -238,6 +256,9 @@
         <span class="roundup-dash">—</span>
         <span class="roundup-desc">사람, 시스템, 실행을 하나로</span>
       </div>
+    </div>
+    <div class="roundup-def-logo">
+      <img src="logo.jpg" alt="ROUND UP COMPANY">
     </div>
   </div>
 </div>
