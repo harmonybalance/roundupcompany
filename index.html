@@ -534,13 +534,13 @@
 <script>
 const FORM_ID = '1FAIpQLSedVksJBsNOWlkT9ll2h0uaQADK-ncdMWX8LmssOn2jbz0z_g';
 const ENTRY = {
-  company: 'entry.1072788473',
-  name:    'entry.1766478555',
-  title:   'entry.1979484496',
-  phone:   'entry.604722425',
-  email:   'entry.1850272365',
-  message: 'entry.874882788',
-  note:    'entry.140094703'
+  company: 'entry.239474426',
+  name:    'entry.2088403307',
+  title:   'entry.2024900179',
+  phone:   'entry.1317858153',
+  email:   'entry.1437485158',
+  message: 'entry.1340829762',
+  note:    'entry.13867688'
 };
 
 function openModal() {
@@ -574,6 +574,9 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
   formData.append(ENTRY.email,   document.getElementById('f_email').value);
   formData.append(ENTRY.message, document.getElementById('f_message').value);
   formData.append(ENTRY.note,    document.getElementById('f_note').value);
+  formData.append('fvv', '1');
+  formData.append('fbzx', '-3236016878034392883');
+  formData.append('pageHistory', '0');
 
   const url = 'https://docs.google.com/forms/d/e/' + FORM_ID + '/formResponse';
 
