@@ -555,51 +555,35 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
   btn.disabled = true;
   btn.textContent = '전송 중...';
 
-  const FORM_ID = '1FAIpQLSedVksJBsNOWlkT9ll2h0uaQADK-ncdMWX8LmssOn2jbz0z_g';
-  const base = 'https://docs.google.com/forms/d/e/' + FORM_ID + '/formResponse';
+  const data = new FormData();
+  data.append('회사명',    document.getElementById('f_company').value);
+  data.append('이름',     document.getElementById('f_name').value);
+  data.append('직책',     document.getElementById('f_title').value);
+  data.append('전화번호',  document.getElementById('f_phone').value);
+  data.append('이메일',   document.getElementById('f_email').value);
+  data.append('문의내용',  document.getElementById('f_message').value);
+  data.append('비고',     document.getElementById('f_note').value);
 
-  const params = new URLSearchParams();
-  params.append('entry.239474426',  document.getElementById('f_company').value);
-  params.append('entry.2088403307', document.getElementById('f_name').value);
-  params.append('entry.2024900179', document.getElementById('f_title').value);
-  params.append('entry.1317858153', document.getElementById('f_phone').value);
-  params.append('entry.1437485158', document.getElementById('f_email').value);
-  params.append('entry.1340829762', document.getElementById('f_message').value);
-  params.append('entry.13867688',   document.getElementById('f_note').value);
-  params.append('fvv', '1');
-  params.append('fbzx', '-3236016878034392883');
-
-  // iframe 방식으로 제출 (CORS 우회)
-  const iframe = document.createElement('iframe');
-  iframe.name = 'hidden_iframe';
-  iframe.style.display = 'none';
-  document.body.appendChild(iframe);
-
-  const form = document.createElement('form');
-  form.method = 'POST';
-  form.action = base;
-  form.target = 'hidden_iframe';
-  form.style.display = 'none';
-
-  params.forEach((value, key) => {
-    const input = document.createElement('input');
-    input.type = 'hidden';
-    input.name = key;
-    input.value = value;
-    form.appendChild(input);
-  });
-
-  document.body.appendChild(form);
-  form.submit();
-
-  setTimeout(() => {
-    document.getElementById('formView').style.display = 'none';
-    document.getElementById('successView').style.display = 'block';
+  fetch('https://formspree.io/f/xyklyedk', {
+    method: 'POST',
+    body: data,
+    headers: { 'Accept': 'application/json' }
+  })
+  .then(res => {
+    if (res.ok) {
+      document.getElementById('formView').style.display = 'none';
+      document.getElementById('successView').style.display = 'block';
+    } else {
+      alert('전송 중 오류가 발생했습니다. 다시 시도해주세요.');
+    }
     btn.disabled = false;
     btn.textContent = '문의 보내기';
-    document.body.removeChild(iframe);
-    document.body.removeChild(form);
-  }, 1500);
+  })
+  .catch(() => {
+    alert('전송 중 오류가 발생했습니다. 다시 시도해주세요.');
+    btn.disabled = false;
+    btn.textContent = '문의 보내기';
+  });
 });
 </script>
 
