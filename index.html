@@ -58,7 +58,7 @@
     .announce-sub { display: none; }
   }
   nav {
-    background: rgba(251,250,248,0.88);
+    background: rgba(255,255,255,0.94);
     backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid transparent;
     transition: border-color 0.3s;
@@ -125,11 +125,14 @@
     letter-spacing: 0.28em; text-transform: uppercase;
     color: rgba(255,255,255,0.5);
   }
-  .hero-grid { display: grid; grid-template-columns: 1fr 320px; gap: 3rem; align-items: center; }
+  .hero-grid { display: grid; grid-template-columns: 1fr 280px; gap: 3rem; align-items: center; }
   .hero-book { display: flex; flex-direction: column; align-items: center; gap: 1.1rem; justify-self: end; }
-  .hero-book img { width: 300px; filter: drop-shadow(0 32px 56px rgba(0,0,0,0.55)); transition: transform 0.3s ease; }
+  .hero-book img { width: 250px; filter: drop-shadow(0 28px 48px rgba(0,0,0,0.55)); transition: transform 0.3s ease; }
   .hero-book:hover img { transform: translateY(-6px); }
   .hero-book span { font-size: 12px; font-weight: 600; letter-spacing: 0.06em; color: var(--bronze); }
+  @media (min-width: 1280px) {
+    .hero-book { transform: translate(72px, 22px); }
+  }
   @media (max-width: 860px) {
     .hero-grid { grid-template-columns: 1fr; gap: 2.6rem; }
     .hero-book { justify-self: center; }
@@ -232,6 +235,7 @@
   .coco-note b { color: var(--ink); }
   .coco-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; margin-bottom: 2.2rem; }
   .coco-card { background: #fff; border: 1px solid var(--hairline); border-radius: 14px; padding: 1.7rem 1.6rem; }
+  .coco-tag { font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--bronze-deep); margin-bottom: 0.5rem; }
   .coco-card h5 { font-size: 16.5px; font-weight: 800; margin-bottom: 0.6rem; }
   .coco-card h5 .co { color: var(--bronze-deep); }
   .coco-card p { font-size: 14.5px; color: var(--stone); line-height: 1.75; }
@@ -287,7 +291,8 @@
   .svc-card h4 { font-size: 16.5px; font-weight: 800; margin-bottom: 0.65rem; }
   .svc-card p { font-size: 14px; color: var(--stone); line-height: 1.8; }
   .svc-tick { display: inline-block; width: 22px; height: 3px; background: var(--bronze); border-radius: 2px; margin-bottom: 1.1rem; }
-  .svc-card.wide { grid-column: 1 / -1; }
+  .svc-grid-3 { grid-template-columns: repeat(3, 1fr); }
+  .svc-note { margin-top: 1.5rem; font-size: 13.5px; color: var(--stone); }
 
   .cta-band { background: var(--ink); color: #fff; text-align: center; padding: 110px 24px; }
   .cta-band h2 {
@@ -458,7 +463,7 @@
   <div class="container">
     <p class="eyebrow reveal">03 · How</p>
     <h2 class="head reveal">단순히 시스템만 바꾸지 않습니다.<br>작동하게 만듭니다</h2>
-    <p class="lead reveal">라운드업의 역할은 단순합니다. 그러나 대부분의 조직이 하지 못하는 일입니다.</p>
+    <p class="lead reveal">라운드업 컴퍼니의 역할은 단순합니다. 그러나 대부분의 조직이 하지 못하는 일입니다.</p>
     <div class="step-grid">
       <div class="step-card reveal"><p class="step-num">1</p><b>시스템을 '실행 기준'으로 전환합니다</b><span>존재하는 문서가 아니라 현장에서 실제로 작동하는 기준으로 만듭니다.</span></div>
       <div class="step-card reveal"><p class="step-num">2</p><b>운영을 '사람'이 아닌 '구조'에 담습니다</b><span>누가 하느냐가 아니라 누가 해도 유지되는 방식으로 설계합니다.</span></div>
@@ -467,7 +472,7 @@
     </div>
     <p class="how-result reveal">그 결과, <em>축적되는 성과는 더 크게 발산합니다.</em></p>
     <p class="approach-sub reveal">더하기보다 빼기</p>
-    <p class="lead reveal">라운드업은 먼저 묻습니다. 지금 있는 것으로 충분한가.</p>
+    <p class="lead reveal">라운드업 컴퍼니는 먼저 묻습니다. 지금 있는 것으로 충분한가.</p>
     <div class="approach-pairs reveal">
       <div class="approach-pair"><b>투자보다 내부 개선</b><span>불필요한 투자를 최소화합니다</span></div>
       <div class="approach-pair"><b>도입보다 운영 정렬</b><span>현장의 실행력을 중심에 둡니다</span></div>
@@ -481,14 +486,14 @@
 <section class="coco" id="coco">
   <div class="container">
     <p class="eyebrow reveal">04 · Co&amp;Co Model</p>
-    <p class="coco-mark reveal"><span class="co">Co</span>aching &amp; <span class="co">Co</span>nsulting</p>
-    <p class="coco-note reveal">Co는 라틴어로 <b>'함께'</b>라는 뜻입니다.<br>라운드업이 일하는 두 축은 모두 '함께'로 시작합니다.</p>
+    <p class="coco-mark reveal"><span class="co">Co</span>nsulting &amp; <span class="co">Co</span>aching</p>
+    <p class="coco-note reveal">Co는 라틴어로 <b>'함께'</b>라는 뜻입니다.<br>라운드업 컴퍼니가 일하는 두 축은 모두 '함께'로 시작합니다.</p>
     <div class="coco-grid">
-      <div class="coco-card reveal"><h5><span class="co">컨설팅</span>은 답을 제시합니다</h5><p>전문성과 경험으로 올바른 방향과 구조를 설계합니다.</p></div>
-      <div class="coco-card reveal"><h5><span class="co">코칭</span>은 답을 찾는 힘을 기릅니다</h5><p>질문과 동행으로 조직이 스스로 움직이게 합니다.</p></div>
+      <div class="coco-card reveal"><p class="coco-tag">Design</p><h5>컨설팅</h5><p>올바른 구조와 방향을 제시합니다.</p></div>
+      <div class="coco-card reveal"><p class="coco-tag">Execution</p><h5>코칭</h5><p>올바른 구조와 방향이 현장에 지속해서 뿌리내리게 하는 힘을 만듭니다.</p></div>
     </div>
     <p class="coco-caveat reveal">컨설팅만으로는 컨설턴트가 떠난 뒤 원점으로 돌아가고,<br>코칭만으로는 올바른 방향을 잡기 어렵습니다.</p>
-    <div class="highlight reveal">라운드업은 둘을 결합합니다.<br>시스템은 컨설팅으로 설계하고, 운영은 코칭으로 완성합니다.<br>그래서 성과는 재현됩니다.</div>
+    <div class="highlight reveal">라운드업 컴퍼니는 이 두 가지를 하나로 결합합니다.<br>컨설팅으로 '작동하는 시스템'을 함께 설계하고, 코칭으로 '자기주도 운영'을 완성할 수 있도록 지원합니다.<br>함께 만들어 가는 성과가 일회성에 그치지 않고 지속적으로 재현되는 이유입니다.</div>
   </div>
 </section>
 
@@ -498,7 +503,7 @@
     <p class="eyebrow reveal">05 · Quality</p>
     <p class="q-quote reveal">"품질이란 고객의 명시적 요구사항과 묵시적 기대수준을 지속적으로 충족시키는 조직의 능력이다"</p>
     <p class="q-source reveal">《모두의 품질》 중에서</p>
-    <p class="q-logic reveal">품질은 조직의 능력입니다.<br>조직의 능력은 구조에서 나옵니다.<br>라운드업은 그 구조를 설계합니다.</p>
+    <p class="q-logic reveal">품질은 조직의 능력입니다.<br>조직의 능력은 구조에서 나옵니다.<br>라운드업 컴퍼니는 그 구조를 설계합니다.</p>
     <p class="q-declare reveal">라운드업 컴퍼니는 품질을 성장의 전략으로 만드는 회사입니다.</p>
     <div class="book-flex">
       <div class="book-img reveal"><img src="book.png" alt="모두의 품질 도서 표지"></div>
@@ -527,11 +532,11 @@
   <div class="container">
     <p class="eyebrow reveal">06 · Proof</p>
     <h2 class="head reveal">현장에서 결과로 검증된 방식입니다</h2>
-    <p class="lead reveal" style="margin-bottom:2.4rem;">라운드업의 접근은 이론이 아니라 고객의 실제 변화로 증명되어 왔습니다.</p>
+    <p class="lead reveal" style="margin-bottom:2.4rem;">라운드업 컴퍼니의 접근은 이론이 아니라 고객의 실제 변화로 증명되어 왔습니다.</p>
     <div class="reveal">
       <div class="proof-row"><span class="proof-check">✓</span><span><b>자동차 부품산업 및 제조업 기반</b> &nbsp;<span class="rest">품질 및 운영 체계의 구조적 개선 수행</span></span></div>
       <div class="proof-row"><span class="proof-check">✓</span><span><b>SQ 인증 대상 20여 개 업체 전반의 등급 향상</b> &nbsp;<span class="rest">올바른 방향과 방법으로 일상 운영을 정착시킨 결과</span></span></div>
-      <div class="proof-row"><span class="proof-check">✓</span><span><b>그랜드 품질 5스타, 품질 5스타 달성 (총 5개사)</b> &nbsp;<span class="rest">품질경영시스템 수준을 구조적으로 도약시킨 결과</span></span></div>
+      <div class="proof-row"><span class="proof-check">✓</span><span><b>그랜드 품질 5스타, 품질 5스타 달성 (총 6개사)</b> &nbsp;<span class="rest">품질경영시스템 수준을 구조적으로 도약시킨 결과</span></span></div>
       <div class="proof-row"><span class="proof-check">✓</span><span><b>대한민국 안전대상 수상</b> &nbsp;<span class="rest">형식적 관리가 아닌 실질적인 안전 운영 체계 구축</span></span></div>
       <div class="proof-row"><span class="proof-check">✓</span><span><b>최우수 협력업체상 수상 및 우수사례 레퍼런스 확보</b> &nbsp;<span class="rest">고객사 관점에서 인정받은 실행 성과 기반 검증</span></span></div>
       <div class="proof-row"><span class="proof-check">✓</span><span><b>'AI 시대, 일하는 방식의 혁신' 기업 교육 및 AI 업무 도구 개발</b> &nbsp;<span class="rest">교육이 현장의 실제 도구와 실행으로 이어진 사례</span></span></div>
@@ -550,20 +555,19 @@
   <div class="container">
     <p class="eyebrow reveal">07 · Services</p>
     <h2 class="head reveal">조직에 기여할 수 있는 영역</h2>
-    <div class="svc-grid">
-      <div class="svc-card wide reveal"><span class="svc-tick"></span><h4>AI 기반 Co&amp;Co</h4><p>AI 시대의 일하는 방식 혁신에도 Co&amp;Co를 적용합니다. 현업에서 바로 쓰는 AI 업무 도구를 개발해 제공하고, 교육과 코칭으로 조직이 AI를 스스로 다루는 힘을 기릅니다.</p></div>
-      <div class="svc-card reveal"><span class="svc-tick"></span><h4>일하는 방식 혁신</h4><p>조직의 운영 구조를 재설계하여 성과가 발생하는 방식으로 전환합니다.</p></div>
-      <div class="svc-card reveal"><span class="svc-tick"></span><h4>전략기획 지원</h4><p>조직에 적합한 전략의 설계와 효과적인 운영을 지원합니다.</p></div>
-      <div class="svc-card reveal"><span class="svc-tick"></span><h4>품질/운영 체계 고도화</h4><p>IATF16949 기반 시스템을 현장 실행과 완전히 일치시키고, 고객 요구사항(SQ, 품질 5스타 등)을 조직의 운영에 자연스럽게 내재화합니다.</p></div>
-      <div class="svc-card reveal"><span class="svc-tick"></span><h4>실행력 강화 프로그램</h4><p>조직의 제품과 서비스, 조직·고객 현황을 사전에 파악해 그 조직만을 위한 교육을 설계합니다. 교육 + 현장 적용 + 코칭으로 실질적인 변화와 내재화를 지원합니다.</p></div>
+    <div class="svc-grid svc-grid-3">
+      <div class="svc-card reveal"><span class="svc-tick"></span><h4>품질전략 수립·실행 지원</h4><p>조직의 품질 개념을 정립하고, 구체적인 전략이 현장에 내재화되도록 수립부터 실행까지 지원합니다.</p></div>
+      <div class="svc-card reveal"><span class="svc-tick"></span><h4>AI 기반 일하는 방식의 혁신</h4><p>조직의 AI 리터러시를 높이고, 현업에서 바로 쓰는 도구와 코칭으로 실제 업무 적용까지 지원합니다.</p></div>
+      <div class="svc-card reveal"><span class="svc-tick"></span><h4>조직 진단 기반 개선 지원</h4><p>조직 진단으로 강점과 리스크를 분석하고, 우선순위에 따른 개선 방안의 실행을 지원합니다.</p></div>
     </div>
+    <p class="svc-note reveal">모든 교육과 코칭은 조직의 제품·서비스와 조직·고객 현황을 사전에 파악해, 그 조직만을 위해 설계합니다.</p>
   </div>
 </section>
 
 <!-- CTA -->
 <div class="cta-band" id="contact">
   <h2 class="reveal">성과는 도입으로 만들어지지 않습니다<br><em>작동하는 구조에서 만들어집니다</em></h2>
-  <p class="desc reveal">라운드업은 시스템을 추가하는 회사가 아닙니다. 시스템이 작동하게 만드는 회사입니다.<br><br>성과를 만들어 내고, 그 성과가 지속적으로 개선될 수 있도록<br>함께 고민하고 함께 해결하겠습니다.</p>
+  <p class="desc reveal">라운드업 컴퍼니는 시스템을 추가하는 회사가 아닙니다. 시스템이 작동하게 만드는 회사입니다.<br><br>성과를 만들어 내고, 그 성과가 지속적으로 개선될 수 있도록<br>함께 고민하고 함께 해결하겠습니다.</p>
   <button class="btn-bronze reveal" onclick="openModal()">문의하기</button>
 </div>
 
