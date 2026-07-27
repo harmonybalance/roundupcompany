@@ -254,6 +254,8 @@
   .q-declare { font-size: clamp(17px, 2.2vw, 20px); font-weight: 800; color: var(--bronze); line-height: 1.6; margin-bottom: 4.5rem; }
   .book-flex { display: flex; gap: 3.2rem; align-items: flex-start; margin-bottom: 3.5rem; }
   .book-img { flex-shrink: 0; width: 250px; }
+  .book-img a img { transition: transform 0.3s ease; }
+  .book-img a:hover img { transform: translateY(-5px); }
   .book-tag { font-size: 12.5px; font-weight: 600; letter-spacing: 0.04em; color: var(--bronze); margin-bottom: 0.5rem; }
   .book-title { font-size: 25px; font-weight: 800; margin-bottom: 0.35rem; }
   .book-meta { font-size: 13px; color: rgba(255,255,255,0.45); margin-bottom: 1.4rem; }
@@ -367,7 +369,7 @@
 <body>
 
 <div class="topbar">
-<a class="announce" href="#quality"><b>신간 《모두의 품질》</b> 2026년 8월 출간<span class="announce-sub">&nbsp;·&nbsp;성장하는 회사가 선택한 단 하나의 전략</span><span class="announce-cta">자세히 보기 →</span></a>
+<a class="announce" href="https://www.roundupcompany.co.kr" target="_blank" rel="noopener"><b>신간 《모두의 품질》</b> 2026년 8월 출간<span class="announce-sub">&nbsp;·&nbsp;성장하는 회사가 선택한 단 하나의 전략</span><span class="announce-cta">자세히 보기 →</span></a>
 <nav id="nav">
   <div class="nav-inner">
     <a href="#" class="nav-logo"><img src="logo.jpg" alt="ROUND UP COMPANY"></a>
@@ -393,7 +395,7 @@
       <button class="btn-bronze reveal" onclick="openModal()">문의하기</button>
       <p class="hero-slogan reveal">From Potential to Performance</p>
     </div>
-    <a href="#quality" class="hero-book reveal">
+    <a href="https://www.roundupcompany.co.kr" target="_blank" rel="noopener" class="hero-book reveal">
       <img src="book.png" alt="신간 모두의 품질 도서">
       <span>신간 · 2026년 8월 출간</span>
     </a>
@@ -504,7 +506,7 @@
     <p class="q-logic reveal">품질은 조직의 능력입니다.<br>조직의 능력은 구조에서 나옵니다.<br>라운드업 컴퍼니는 그 구조를 설계합니다.</p>
     <p class="q-declare reveal">라운드업 컴퍼니는 품질을 성장의 전략으로 만드는 회사입니다.</p>
     <div class="book-flex">
-      <div class="book-img reveal"><img src="book.png" alt="모두의 품질 도서 표지"></div>
+      <div class="book-img reveal"><a href="https://www.roundupcompany.co.kr" target="_blank" rel="noopener"><img src="book.png" alt="모두의 품질 도서 표지"></a></div>
       <div class="book-info reveal">
         <p class="book-tag">성장하는 회사가 선택한 단 하나의 전략</p>
         <p class="book-title">《모두의 품질》</p>
